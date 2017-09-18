@@ -1,12 +1,11 @@
 // @flow
-import { relative, join, dirname } from 'path'
 import flowSyntax from 'babel-plugin-syntax-flow'
 import * as t from 'babel-types'
 import template from 'babel-template'
 import snakeCase from 'lodash.snakecase'
 import camelCase from 'lodash.camelcase'
 import { removeFlowComment, addFlowComment } from 'babel-add-flow-comments'
-import blog from 'babel-log'
+// import blog from 'babel-log'
 
 type Node = {
   type: string,
@@ -39,11 +38,6 @@ const builders = {
   }`),
 }
 
-function getPrefix({ opts: { filename } }: File, removePrefix: string = '') {
-  const file = relative(join(process.cwd(), removePrefix), filename)
-  return dirname(file) + '/'
-}
-
 function createActionCreater(name, props, params) {
   const typeIdentifier = t.identifier('type')
   return builders.actionCreater({
@@ -69,8 +63,6 @@ export default () => {
           removeFlowComment(file.ast.comments)
 
           const imports = []
-          const actionMap: Map<string, Node> = new Map()
-
           const typeNames = []
           const actions = []
           const funcs = []
