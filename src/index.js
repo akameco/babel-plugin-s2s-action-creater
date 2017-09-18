@@ -33,7 +33,7 @@ const babylonOpts = { sourceType: 'module', plugins: ['flow'] }
 const wrapTemp = (tmpl: string) => template(tmpl, babylonOpts)
 
 const builders = {
-  actionCreater: wrapTemp(`function NAME(PARAMS): TYPE {
+  actionCreater: wrapTemp(`export function NAME(PARAMS): TYPE {
     return VALUE;
   }`),
 }

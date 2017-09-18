@@ -27,7 +27,7 @@ import type { Count } from './types';
 import { ADD } from './actionTypes';
 import type { Add } from './actionTypes';
 
-function add(n: number, payload: Count): Add {
+export function add(n: number, payload: Count): Add {
   return {
     type: ADD,
     n,
@@ -59,7 +59,7 @@ export type Action = Add
 import { ADD } from './actionTypes';
 import type { Add } from './actionTypes';
 
-function add(payload: number): Add {
+export function add(payload: number): Add {
   return {
     type: ADD,
     payload
@@ -89,7 +89,7 @@ export type Action = Increment;
 import { INCREMENT } from \\"./actionTypes\\";
 import type { Increment } from \\"./actionTypes\\";
 
-function increment(): Increment {
+export function increment(): Increment {
   return {
     type: INCREMENT
   };
@@ -123,13 +123,12 @@ export type Action = Increment | Decrement
 import { INCREMENT, DECREMENT } from './actionTypes';
 import type { Increment, Decrement } from './actionTypes';
 
-function increment(): Increment {
+export function increment(): Increment {
   return {
     type: INCREMENT
   };
 }
-
-function decrement(): Decrement {
+export function decrement(): Decrement {
   return {
     type: DECREMENT
   };
